@@ -1,7 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  ssr: false, // Set to true if you need server-side rendering
+  ssr: true, // Set to true if you need server-side rendering
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
