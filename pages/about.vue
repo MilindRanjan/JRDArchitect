@@ -3,7 +3,7 @@
   <div>
     <Header />
     <div class="max-w-6xl mx-auto px-4 py-16 bg-white">
-      <h1 class="text-4xl font-bold text-center mb-16 text-gray-900">Our Team</h1>
+      <h1 class="text-4xl font-bold text-center mb-16 text-gray-900 mt-12">Our Team</h1>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div 

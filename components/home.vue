@@ -1,7 +1,6 @@
 <template>
   <div class="portfolio-content">
     <!-- Logo, Name, and Motto -->
-    <!-- Logo, Name, and Motto -->
     <section class="hero">
       <div class="logo-container">
         <img src="/logo.jpeg" alt="Company Logo" class="logo">
@@ -223,6 +222,39 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .hero {
+    display: flex;
+    flex-direction: column; /* Stack logo and text vertically */
+    align-items: center; /* Center align all content */
+    justify-content: center; /* Vertically center content */
+    padding: 20px; /* Add some padding for spacing */
+    text-align: center; /* Center text alignment */
+    background-color: #f9f9f9; /* Soft background color for better contrast */
+  }
+
+  .logo-container img {
+    margin-top: 40px;
+    max-width: 80%; /* Scale down the logo for smaller screens */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space below the logo */
+  }
+
+  .hero-text h1 {
+    text-align: center;
+    font-size: 24px; /* Slightly smaller heading */
+    font-weight: bold; /* Emphasize the title */
+    margin: 10px 0; /* Add margin for spacing */
+    color: #333; /* Dark text for better readability */
+  }
+
+  .hero-text .motto {
+    text-align: center;
+    font-size: 16px; /* Reduce font size for the motto */
+    color: #555; /* Softer tone for the motto */
+    margin: 0; /* Align text properly */
+    line-height: 1.4; /* Improve readability */
+  }
+
   .timeline-container::before {
     left: 30px;
   }
