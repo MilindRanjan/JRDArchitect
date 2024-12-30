@@ -1,7 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  
+  ssr: false, // Set to true if you need server-side rendering
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -52,6 +52,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    
+    publicPath: '/_nuxt/' // Cloudflare requires a correct publicPath
   }
 }
