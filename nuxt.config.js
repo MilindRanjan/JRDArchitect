@@ -1,8 +1,9 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  ssr: true, // Set to true if you need server-side rendering
-
+  router: {
+    base: '/JRDArchitect/', // Change 'repo' to your actual repository name
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     
