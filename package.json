@@ -16,8 +16,8 @@
     "nodemailer": "^6.9.16",
     "nuxt": "^3.0.0",
     "vue": "^3.2.0", 
-    "vue-server-renderer": "^2.7.10",
-    "vue-template-compiler": "^2.7.10"
+    "vue-server-renderer": "^3.2.0", 
+    "vue-template-compiler": "^3.2.0" 
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.2",
