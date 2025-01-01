@@ -12,6 +12,7 @@
     <Header v-if="fadeOut" />
     <Home v-if="fadeOut" />
     <ProjectsSection />
+    <Prizes />
     <!-- Floating Contact Button -->
     <button 
       v-if="fadeOut" 
@@ -125,6 +126,8 @@ import emailjs from 'emailjs-com';
 import Header from '~/components/Header.vue';
 import Home from '~/components/Home.vue';
 import ProjectsSection from '~/components/ProjectsSection.vue';
+import Achievements from '../components/Prizes.vue';
+import Prizes from '../components/Prizes.vue';
 
 const fadeOut = ref(false);
 const showContactForm = ref(false);

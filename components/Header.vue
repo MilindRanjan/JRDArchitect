@@ -1,7 +1,7 @@
 <template>
   <header :class="{ 'mobile-open': isMenuOpen }">
     <div class="logo-container">
-      <img src="/logo.jpeg" alt="Company Logo" class="logo" >
+      <img src="/logo.jpeg" alt="Company Logo" class="logo">
     </div>
     
     <button 
@@ -20,11 +20,21 @@
         <li v-for="(item, index) in menuItems" :key="index">
           <nuxt-link 
             :to="item.path"
-            @click="closeMenu"
+            @click="item.hasDropdown ? toggleDropdown(index) : closeMenu"
             :class="{ 'active': $route.path === item.path }"
           >
             {{ item.name }}
           </nuxt-link>
+          <!-- Dropdown for Projects -->
+          <ul v-if="item.hasDropdown && activeDropdown === index" class="dropdown">
+            <li 
+              v-for="category in categories" 
+              :key="category"
+              @click.stop="filterCategory(category)"
+            >
+              {{ category }}
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
@@ -40,12 +50,14 @@
 
 <script>
 export default {
+  props: ['categories'], // Pass categories as a prop from parent
   data() {
     return {
       isMenuOpen: false,
+      activeDropdown: null, // Track the active dropdown index
       menuItems: [
         { name: 'Home', path: '/' },
-        { name: 'Projects', path: '/projects' },
+        { name: 'Projects', path: '/projects', hasDropdown: true },
         { name: 'About Us', path: '/about' },
         { name: 'Contact Me', path: '/contact' }
       ]
@@ -55,25 +67,31 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-      // Prevent body scroll when menu is open
       document.body.style.overflow = this.isMenuOpen ? 'hidden' : '';
     },
     
     closeMenu() {
       this.isMenuOpen = false;
       document.body.style.overflow = '';
+    },
+    
+    toggleDropdown(index) {
+      this.activeDropdown = this.activeDropdown === index ? null : index;
+    },
+
+    filterCategory(category) {
+      this.$emit('filter-category', category); // Emit selected category to parent
+      this.activeDropdown = null; // Close the dropdown after selection
     }
   },
-  
+
   mounted() {
-    // Close menu on escape key
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isMenuOpen) {
         this.closeMenu();
       }
     });
 
-    // Close menu on resize if screen becomes larger than mobile breakpoint
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768 && this.isMenuOpen) {
         this.closeMenu();
@@ -82,7 +100,6 @@ export default {
   },
 
   beforeDestroy() {
-    // Clean up event listeners
     window.removeEventListener('keydown', this.closeMenu);
     window.removeEventListener('resize', this.closeMenu);
     document.body.style.overflow = '';
@@ -91,6 +108,26 @@ export default {
 </script>
 
 <style scoped>
+.dropdown {
+  position: absolute;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.dropdown li {
+  padding: 10px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+}
 header {
   display: flex;
   justify-content: space-between;
