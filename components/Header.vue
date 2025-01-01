@@ -1,7 +1,7 @@
 <template>
   <header :class="{ 'mobile-open': isMenuOpen }">
     <div class="logo-container">
-      <img src="/logo.jpeg" alt="Company Logo" class="logo">
+      <img src="/logo.jpeg" alt="Company Logo" class="logo" >
     </div>
     
     <button 

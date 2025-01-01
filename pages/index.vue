@@ -4,14 +4,14 @@
     <transition name="fade">
       <div v-if="!fadeOut" class="welcome-overlay" @click="fadeOutOverlay">
         <img src="/logo.jpeg" alt="Company Logo" class="logo">
-        <h1 class="company-name">Janaki Raman Designs</h1>
+        <h1 class="company-name">JRD Architects</h1>
       </div>
     </transition>
 
     <!-- Main Components -->
     <Header v-if="fadeOut" />
     <Home v-if="fadeOut" />
-
+    <ProjectsSection />
     <!-- Floating Contact Button -->
     <button 
       v-if="fadeOut" 
@@ -124,6 +124,7 @@ import { ref, reactive, onMounted } from 'vue';
 import emailjs from 'emailjs-com';
 import Header from '~/components/Header.vue';
 import Home from '~/components/Home.vue';
+import ProjectsSection from '~/components/ProjectsSection.vue';
 
 const fadeOut = ref(false);
 const showContactForm = ref(false);
@@ -176,6 +177,7 @@ const handleSubmit = async () => {
 onMounted(() => {
   checkWelcomeOverlay();
 });
+
 </script>
 
 <style scoped>
@@ -197,7 +199,13 @@ onMounted(() => {
   transform: scale(1);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
+h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+  color: #333;
+  position: relative;
+}
 .logo {
   width: 30%;
   max-width: 200px;
